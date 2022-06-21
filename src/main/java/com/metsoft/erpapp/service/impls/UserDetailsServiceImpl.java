@@ -1,7 +1,7 @@
 package com.metsoft.erpapp.service.impls;
 
 import com.metsoft.erpapp.model.dbModel.User;
-import com.metsoft.erpapp.model.dto.UserDetailsDto;
+import com.metsoft.erpapp.dto.UserDetailsDto;
 import com.metsoft.erpapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

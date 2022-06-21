@@ -1,4 +1,4 @@
-package com.metsoft.erpapp.model.dto;
+package com.metsoft.erpapp.dto;
 
 import lombok.Data;
 

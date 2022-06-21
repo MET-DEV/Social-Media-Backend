@@ -19,15 +19,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
-    @Autowired
-    private TokenManager tokenManager;
 
-    @Autowired
+    private TokenManager tokenManager;
     private UserDetailsService service;
+    @Autowired
+    public JwtTokenFilter(TokenManager tokenManager, UserDetailsService service) {
+        this.tokenManager = tokenManager;
+        this.service = service;
+    }
 
 
     @Override
