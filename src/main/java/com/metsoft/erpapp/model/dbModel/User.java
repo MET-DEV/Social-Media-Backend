@@ -55,34 +55,22 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "post_comments_users",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "post_comment_id")
-    )
+   @OneToMany()
     private List<PostComment> postComments;
 
+    @OneToMany()
+    private List<Post> posts;
 
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "post_like_users_posts",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "post_like_id")
-    )
+
+    @ManyToMany()
     private List<PostLike> postLikes;
 
 
 
 
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "post_comment_liked_users_post",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "post_comment_like_id")
-    )
+   @ManyToMany()
     private List<PostCommentLike> postCommentLikes;
 
 }

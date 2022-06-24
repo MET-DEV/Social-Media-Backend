@@ -22,6 +22,11 @@ public class PostCommentLike {
     @JoinColumn(name = "post_id")
     private Post post;
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "post_comment_liked_users_post",
+            joinColumns = @JoinColumn(name = "post_comment_like_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<User> users;
 }

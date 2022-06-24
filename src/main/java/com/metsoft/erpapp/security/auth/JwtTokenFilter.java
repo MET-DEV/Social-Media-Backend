@@ -23,13 +23,15 @@ import java.io.IOException;
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
 
-    private TokenManager tokenManager;
-    private UserDetailsService service;
     @Autowired
+    private TokenManager tokenManager;
+    @Autowired
+    private UserDetailsService service;
+   /** @Autowired
     public JwtTokenFilter(TokenManager tokenManager, UserDetailsService service) {
         this.tokenManager = tokenManager;
         this.service = service;
-    }
+    }**/
 
 
     @Override

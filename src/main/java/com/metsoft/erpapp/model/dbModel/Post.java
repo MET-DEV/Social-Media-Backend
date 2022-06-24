@@ -23,11 +23,14 @@ public class Post {
     @Column(name = "post_message")
     private String postMessage;
 
-    @Column(name = "user_id")
-    private int userId;
+
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private  User user;
 
     @OneToMany()
     private List<PostImage> postImages;

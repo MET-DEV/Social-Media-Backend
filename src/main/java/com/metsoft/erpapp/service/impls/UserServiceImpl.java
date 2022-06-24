@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response save(User user) {
+        userRepository.save(user);
         return new SuccessResponse(true,"User saved");
     }
 

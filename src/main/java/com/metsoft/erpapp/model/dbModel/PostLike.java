@@ -22,7 +22,11 @@ public class PostLike {
     @JoinColumn(name = "user_id")
     private List<User> user;
 
-    @ManyToOne()
-    @JoinColumn(name = "post_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "post_like_users_posts",
+            joinColumns = @JoinColumn(name = "post_like_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private Post post;
 }

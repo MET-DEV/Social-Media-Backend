@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     private static final String[] AuthList = {
+            "/**",
             "/register",
             "/login"
 
@@ -36,21 +37,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new UserDetailsServiceImpl();
     }
 
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
-
-
-
-    @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
