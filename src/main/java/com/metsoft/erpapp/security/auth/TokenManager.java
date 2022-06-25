@@ -3,6 +3,7 @@ package com.metsoft.erpapp.security.auth;
 
 
 import com.metsoft.erpapp.repository.UserRepository;
+import com.metsoft.erpapp.service.responseModel.TokenResponse;
 import io.jsonwebtoken.*;
 
 
@@ -28,11 +29,11 @@ public class TokenManager {
 
     private static final int expirationTime = 5 * 60 * 1000;
     Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    public String generateToken(Authentication authentication) {
+    public TokenResponse generateToken(Authentication authentication) {
         final String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
-        return Jwts.builder()
+        String token= Jwts.builder()
                 .setSubject(authentication.getName())
                 .setExpiration(new Date(System.currentTimeMillis()+expirationTime))
                 .setIssuer("Met")
@@ -40,6 +41,15 @@ public class TokenManager {
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .signWith(key)
                 .compact();
+
+        String refreshToken= Jwts.builder()
+                .setSubject(authentication.getName())
+                .setExpiration(new Date(System.currentTimeMillis()+expirationTime))
+                .setIssuer("Met")
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .signWith(key)
+                .compact();
+        return new TokenResponse(token,refreshToken);
     }
 
 

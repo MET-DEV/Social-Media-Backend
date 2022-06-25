@@ -4,6 +4,7 @@ import com.metsoft.erpapp.model.dbModel.User;
 import com.metsoft.erpapp.dto.LoginDto;
 import com.metsoft.erpapp.repository.UserRepository;
 import com.metsoft.erpapp.security.auth.TokenManager;
+import com.metsoft.erpapp.service.responseModel.TokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -41,7 +42,7 @@ public class TestsController {
 
 
     @PostMapping("login")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
+    public ResponseEntity login(@RequestBody LoginDto loginDto){
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginDto.getUsername(),
@@ -49,7 +50,7 @@ public class TestsController {
                 )
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        final String token = tokenManager.generateToken(authentication);
+        final TokenResponse token = tokenManager.generateToken(authentication);
         return ResponseEntity.ok(token);
 
     }

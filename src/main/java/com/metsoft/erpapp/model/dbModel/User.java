@@ -1,9 +1,8 @@
 package com.metsoft.erpapp.model.dbModel;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,7 +11,8 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
@@ -47,7 +47,7 @@ public class User {
     @Column(name = "status")
     private boolean isEnabled;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -72,5 +72,9 @@ public class User {
 
    @ManyToMany()
     private List<PostCommentLike> postCommentLikes;
+
+    public void assignRoleToUser(Role role){
+        roles.add(role);
+    }
 
 }

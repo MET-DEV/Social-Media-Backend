@@ -1,16 +1,18 @@
 package com.metsoft.erpapp.model.dbModel;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Table(name="roles")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Role {
     @Id
     @Column(name = "id")
@@ -18,4 +20,8 @@ public class Role {
     private int id;
 
     private String name;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "roles")
+    @JsonIgnore
+    private Set<User> users;
 }

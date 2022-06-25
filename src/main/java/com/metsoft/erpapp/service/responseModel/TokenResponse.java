@@ -1,14 +1,16 @@
 package com.metsoft.erpapp.service.responseModel;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ErrorResponse extends  Response{
-    private boolean status;
-    private String message;
+public class TokenResponse {
+    private String token;
+    private String refreshToken;
 
 }
