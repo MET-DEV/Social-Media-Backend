@@ -1,5 +1,6 @@
 package com.metsoft.erpapp.service.impls;
 
+import com.metsoft.erpapp.dto.SavePostDto;
 import com.metsoft.erpapp.model.dbModel.Post;
 import com.metsoft.erpapp.repository.PostRepository;
 import com.metsoft.erpapp.service.interfaces.PostService;
@@ -22,7 +23,8 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public Response save(Post post) {
+    public Response save(SavePostDto savePostDto) {
+        Post post=savePostDto.savePostDtoToPost(savePostDto);
         postRepository.save(post);
         return new SuccessResponse(true,"Post Saved");
     }

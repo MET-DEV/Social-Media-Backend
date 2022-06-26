@@ -1,5 +1,6 @@
 package com.metsoft.erpapp.api.controller;
 
+import com.metsoft.erpapp.dto.SavePostDto;
 import com.metsoft.erpapp.model.dbModel.Post;
 import com.metsoft.erpapp.service.interfaces.PostService;
 import com.metsoft.erpapp.service.responseModel.Response;
@@ -22,7 +23,7 @@ public class PostsController {
         return postService.findAll();
     }
     @PostMapping("")
-    public Response save(@RequestBody Post post){
-        return postService.save(post);
+    public Response save(@RequestBody SavePostDto savePostDto){
+        return postService.save(savePostDto);
     }
 }

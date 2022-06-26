@@ -26,9 +26,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     private static final String[] AuthList = {
-            "/**",
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**",
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
             "/register",
-            "/login"
+            "/login",
+            "/v1/auth/register",
+            "/v1/auth/login"
 
     };
 

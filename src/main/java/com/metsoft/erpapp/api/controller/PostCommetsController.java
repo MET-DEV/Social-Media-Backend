@@ -1,5 +1,6 @@
 package com.metsoft.erpapp.api.controller;
 
+import com.metsoft.erpapp.dto.SavePostCommentDto;
 import com.metsoft.erpapp.model.dbModel.PostComment;
 import com.metsoft.erpapp.service.interfaces.PostCommentService;
 import com.metsoft.erpapp.service.responseModel.Response;
@@ -21,8 +22,10 @@ public class PostCommetsController {
     public Response findAll(){
         return postCommentService.findAll();
     }
-    @PostMapping
-    public Response save(@RequestBody PostComment postComment){
-        return postCommentService.save(postComment);
+
+    @PostMapping("")
+    public Response save(@RequestBody SavePostCommentDto postCommentDto){
+        return postCommentService.save(postCommentDto);
     }
+
 }

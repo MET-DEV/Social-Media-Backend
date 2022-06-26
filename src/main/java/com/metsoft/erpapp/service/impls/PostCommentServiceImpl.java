@@ -1,8 +1,9 @@
 package com.metsoft.erpapp.service.impls;
 
-import com.metsoft.erpapp.model.dbModel.Post;
+import com.metsoft.erpapp.dto.SavePostCommentDto;
+
 import com.metsoft.erpapp.model.dbModel.PostComment;
-import com.metsoft.erpapp.model.dbModel.User;
+
 import com.metsoft.erpapp.repository.PostCommentRepository;
 import com.metsoft.erpapp.service.interfaces.PostCommentService;
 import com.metsoft.erpapp.service.responseModel.Response;
@@ -11,7 +12,8 @@ import com.metsoft.erpapp.service.responseModel.SuccessResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
+
 import java.util.List;
 
 @Service
@@ -24,7 +26,8 @@ public class PostCommentServiceImpl implements PostCommentService {
     }
 
     @Override
-    public Response save(PostComment comment) {
+    public Response save(SavePostCommentDto savePostCommentDto) {
+         PostComment  comment=savePostCommentDto.SavePostCommentDtoToPostComment(savePostCommentDto);
         postCommentRepository.save(comment);
         return new SuccessResponse(true,"Comment Added");
     }
