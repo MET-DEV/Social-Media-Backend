@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -25,8 +26,11 @@ public class PostComment {
     @JoinColumn(name = "post_id")
     private Post post;
 
+    @OneToMany
+    private List<PostCommentLike> postCommentLikes;
+
     @ManyToOne()
-    @JoinColumn(name = "user_id")
-    private User user;
+        @JoinColumn(name = "user_id")
+        private User user;
 
 }

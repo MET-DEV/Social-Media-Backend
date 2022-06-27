@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 import java.util.List;
 
 @Entity
@@ -19,14 +20,10 @@ public class PostCommentLike {
     private int id;
 
     @ManyToOne()
-    @JoinColumn(name = "post_id")
-    private Post post;
+    @JoinColumn(name = "comment_id")
+    private PostComment comment;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "post_comment_liked_users_post",
-            joinColumns = @JoinColumn(name = "post_comment_like_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private List<User> users;
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
 }

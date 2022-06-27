@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     private static final String[] AuthList = {
+            "/**",
             "/v2/api-docs",
             "/swagger-resources",
             "/swagger-resources/**",

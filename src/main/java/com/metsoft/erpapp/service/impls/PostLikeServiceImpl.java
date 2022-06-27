@@ -1,5 +1,6 @@
 package com.metsoft.erpapp.service.impls;
 
+import com.metsoft.erpapp.dto.SavePostLikeDto;
 import com.metsoft.erpapp.model.dbModel.PostLike;
 import com.metsoft.erpapp.repository.PostLikeRepository;
 import com.metsoft.erpapp.service.interfaces.PostLikeService;
@@ -21,7 +22,8 @@ public class PostLikeServiceImpl implements PostLikeService {
     }
 
     @Override
-    public Response save(PostLike postLike) {
+    public Response save(SavePostLikeDto savePostLikeDto) {
+        PostLike postLike=savePostLikeDto.savePostDtoToPostLike(savePostLikeDto);
         postLikeRepository.save(postLike);
         return new SuccessResponse(true,"Post Liked");
     }

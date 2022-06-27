@@ -62,15 +62,11 @@ public class User {
     private List<Post> posts;
 
 
-
-    @ManyToMany()
+    @OneToMany()
     private List<PostLike> postLikes;
 
 
-
-
-
-   @ManyToMany()
+    @OneToMany()
     private List<PostCommentLike> postCommentLikes;
 
     public void assignRoleToUser(Role role){

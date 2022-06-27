@@ -1,5 +1,6 @@
 package com.metsoft.erpapp.api.controller;
 
+import com.metsoft.erpapp.dto.SavePostLikeDto;
 import com.metsoft.erpapp.model.dbModel.PostLike;
 import com.metsoft.erpapp.service.interfaces.PostLikeService;
 import com.metsoft.erpapp.service.responseModel.Response;
@@ -21,7 +22,7 @@ public class PostLikesController {
         return postLikeService.findAll();
     }
     @PostMapping("")
-    public Response save(@RequestBody PostLike postLike){
-        return postLikeService.save(postLike);
+    public Response save(@RequestBody SavePostLikeDto savePostLikeDto){
+        return postLikeService.save(savePostLikeDto);
     }
 }
