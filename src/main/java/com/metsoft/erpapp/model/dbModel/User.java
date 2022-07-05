@@ -2,6 +2,7 @@ package com.metsoft.erpapp.model.dbModel;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class User {
     private String  username;
 
     @Column(name = "password")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String  password;
 
 
@@ -48,6 +50,7 @@ public class User {
     private boolean isEnabled;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -56,21 +59,23 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
    @OneToMany()
-    private List<PostComment> postComments;
+   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+   private List<PostComment> postComments;
 
     @OneToMany()
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Post> posts;
 
 
     @OneToMany()
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<PostLike> postLikes;
 
 
-    @OneToMany()
+    @OneToMany(mappedBy = "user")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<PostCommentLike> postCommentLikes;
 
-    public void assignRoleToUser(Role role){
-        roles.add(role);
-    }
+
 
 }

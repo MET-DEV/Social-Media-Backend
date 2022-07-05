@@ -47,4 +47,9 @@ public class PostLikeServiceImpl implements PostLikeService {
     public Response findById() {
         return null;
     }
+
+    @Override
+    public int getPostLikeByPostId(int postId) {
+        return postLikeRepository.getPostLikeCountByPostId(postId);
+    }
 }

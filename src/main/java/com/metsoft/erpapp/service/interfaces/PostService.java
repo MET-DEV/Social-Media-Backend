@@ -9,7 +9,7 @@ public interface PostService {
     Response update(Post post);
     Response delete(int id);
     Response findAll();
-    Response findById();
+    Response findById(int id);
 
 
 }

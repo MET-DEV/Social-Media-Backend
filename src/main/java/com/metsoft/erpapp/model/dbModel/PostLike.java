@@ -1,5 +1,6 @@
 package com.metsoft.erpapp.model.dbModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,6 @@ public class PostLike {
 
     @ManyToOne()
     @JoinColumn(name = "post_id")
+    @JsonIgnore
     private Post post;
 }

@@ -10,5 +10,6 @@ public interface PostLikeService {
     Response update(PostLike postLike);
     Response findAll();
     Response findById();
+    int getPostLikeByPostId(int postId);
 
 }

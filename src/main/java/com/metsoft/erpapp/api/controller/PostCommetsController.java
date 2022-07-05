@@ -27,5 +27,9 @@ public class PostCommetsController {
     public Response save(@RequestBody SavePostCommentDto postCommentDto){
         return postCommentService.save(postCommentDto);
     }
+    @GetMapping("getcount")
+    public int getPostCount(int postId){
+        return postCommentService.getPostCommentCount(postId);
+    }
 
 }

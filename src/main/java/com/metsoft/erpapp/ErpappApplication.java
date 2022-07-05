@@ -1,6 +1,9 @@
 package com.metsoft.erpapp;
 
 
+import com.metsoft.erpapp.service.impls.PostCommentServiceImpl;
+import com.metsoft.erpapp.service.interfaces.PostCommentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +26,7 @@ public class ErpappApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ErpappApplication.class, args);
+
     }
 
     @Bean

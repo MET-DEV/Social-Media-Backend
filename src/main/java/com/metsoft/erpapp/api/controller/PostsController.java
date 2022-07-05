@@ -22,6 +22,11 @@ public class PostsController {
     public Response findAll(){
         return postService.findAll();
     }
+    @GetMapping("{id}")
+    public Response findById(@RequestParam int id){
+        return postService.findById(id);
+    }
+
     @PostMapping("")
     public Response save(@RequestBody SavePostDto savePostDto){
         return postService.save(savePostDto);

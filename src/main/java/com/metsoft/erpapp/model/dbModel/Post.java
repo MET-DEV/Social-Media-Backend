@@ -3,6 +3,7 @@ package com.metsoft.erpapp.model.dbModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -32,11 +33,11 @@ public class Post {
     @JoinColumn(name = "user_id")
     private  User user;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "post")
     private List<PostImage> postImages;
-    @OneToMany()
+    @OneToMany(mappedBy = "post")
     private List<PostLike> postLikes;
-    @OneToMany
+    @OneToMany(mappedBy = "post")
     private List<PostComment> postComments;
 
 

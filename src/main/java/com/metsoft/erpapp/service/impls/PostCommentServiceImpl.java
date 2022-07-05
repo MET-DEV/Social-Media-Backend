@@ -51,4 +51,9 @@ public class PostCommentServiceImpl implements PostCommentService {
     public Response findById(int id) {
         return null;
     }
+
+    @Override
+    public int getPostCommentCount(int postId) {
+        return postCommentRepository.countByPostId(postId);
+    }
 }
