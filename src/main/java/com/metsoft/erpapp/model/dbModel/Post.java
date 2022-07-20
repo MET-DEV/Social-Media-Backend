@@ -1,8 +1,6 @@
 package com.metsoft.erpapp.model.dbModel;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
@@ -10,7 +8,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "posts")
 @AllArgsConstructor
 @NoArgsConstructor

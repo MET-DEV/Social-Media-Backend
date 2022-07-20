@@ -18,6 +18,8 @@ public class GetPostDto {
     private String postMessage;
     private List<PostImage> postImage;
     private String userName;
+    private String firstName;
+    private String lastName;
     private int likeCount;
     private int commentCount;
 

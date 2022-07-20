@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/v1/auth/")
+@RequestMapping("/api/v1/auth")
 @RestController
 public class AuthController {
 
@@ -35,7 +35,7 @@ public class AuthController {
     }
 
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity login(@RequestBody LoginDto loginDto){
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -50,11 +50,11 @@ public class AuthController {
     }
 
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public ResponseEntity<Response> register(@RequestBody RegisterDto registerDto){
         return ResponseEntity.ok(userService.save(registerDto));
     }
-    @PostMapping("assignrole")
+    @PostMapping("/assignrole")
     public Response assignRole(@RequestBody AssignRoleToUserDto assignRoleToUserDto){
         return userService.assignRoleToUser(assignRoleToUserDto);
     }

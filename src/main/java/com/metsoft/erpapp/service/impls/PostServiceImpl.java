@@ -1,6 +1,5 @@
 package com.metsoft.erpapp.service.impls;
 
-import com.google.common.reflect.TypeToken;
 import com.metsoft.erpapp.dto.GetPostDetailDto;
 import com.metsoft.erpapp.dto.GetPostDto;
 import com.metsoft.erpapp.dto.SavePostDto;
@@ -13,12 +12,10 @@ import com.metsoft.erpapp.service.responseModel.Response;
 import com.metsoft.erpapp.service.responseModel.SuccessDataResponse;
 import com.metsoft.erpapp.service.responseModel.SuccessResponse;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
-import org.modelmapper.TypeMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,7 +55,8 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Response findAll() {
-        List<GetPostDto> postDtos=getAsPostDto(postRepository.findAll());
+        List<Post> posts=postRepository.findAll();
+        List<GetPostDto> postDtos=getAsPostDto(posts);
         List<GetPostDto> postDtoswithLikeAndCommentCount=setPostLikeCountAndCommentCount(postDtos);
         return new SuccessDataResponse<List<GetPostDto>>(true,"Posts Listed",postDtoswithLikeAndCommentCount);
     }
@@ -90,13 +88,20 @@ public class PostServiceImpl implements PostService {
         return  postDto;
     }
 
-
+    //postDtoFor.setPostMessage(post.getPostMessage());
+    //postDtoFor.setPostImage(post.getPostImages());
+    //postDtoFor.setFullName(post.getUser().getFirstName()+" "+post.getUser().getLastName());
+    //postDtoFor.setUserName(post.getUser().getUsername());
 
     // ? This method for "Post" to "GetPostDto" mapping
     private List<GetPostDto> getAsPostDto(List<Post> posts){;
-        Type listType=new TypeToken<List<GetPostDto>>(){}.getType();
-        List<GetPostDto> postDtos=  modelMapper.map(posts,listType);
-       return postDtos;
+        GetPostDto postDtoFor=new GetPostDto();
+        List<GetPostDto> postDtos1=posts.stream()
+                .map(post -> modelMapper.map(post, GetPostDto.class))
+                .collect(Collectors.toList());
+
+                return postDtos1;
+
     }
 
     // ? For Post comment count and post comment like adding to "GetPostDto" list

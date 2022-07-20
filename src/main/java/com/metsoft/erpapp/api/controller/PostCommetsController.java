@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/v1/postcomments/")
+@RequestMapping("/api/v1/postcomments")
 public class PostCommetsController {
     private PostCommentService postCommentService;
 
@@ -27,7 +27,7 @@ public class PostCommetsController {
     public Response save(@RequestBody SavePostCommentDto postCommentDto){
         return postCommentService.save(postCommentDto);
     }
-    @GetMapping("getcount")
+    @GetMapping("/getcount")
     public int getPostCount(int postId){
         return postCommentService.getPostCommentCount(postId);
     }

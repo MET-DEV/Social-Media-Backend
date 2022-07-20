@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/v1/postcommentlikes/")
+@RequestMapping("/api/v1/postcommentlikes")
 public class PostCommentLikesController {
     private PostCommentLikeService postCommentLikeService;
 

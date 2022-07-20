@@ -24,6 +24,9 @@ public class MapperConfig {
                 map().setId(source.getId());
                 map().setCommentCount(12);
                 map().setLikeCount(12);
+                map().setFirstName(source.getUser().getFirstName());
+                map().setLastName(source.getUser().getLastName());
+
             }
         }).validate();
         modelMapper.addMappings(new PropertyMap<Post, GetPostDetailDto>() {

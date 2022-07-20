@@ -1,7 +1,6 @@
 package com.metsoft.erpapp.model.dbModel;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
