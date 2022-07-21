@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -21,6 +22,9 @@ public class PostComment {
 
     @Column(name = "comment_message")
     private String commentMessage;
+
+    @Column(name = "comment_date")
+    private LocalDateTime date;
 
     @ManyToOne()
     @JoinColumn(name = "post_id")

@@ -1,7 +1,6 @@
 package com.metsoft.erpapp.api.controller;
 
 import com.metsoft.erpapp.dto.SavePostCommentDto;
-import com.metsoft.erpapp.model.dbModel.PostComment;
 import com.metsoft.erpapp.service.interfaces.PostCommentService;
 import com.metsoft.erpapp.service.responseModel.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +26,13 @@ public class PostCommetsController {
     public Response save(@RequestBody SavePostCommentDto postCommentDto){
         return postCommentService.save(postCommentDto);
     }
-    @GetMapping("/getcount")
-    public int getPostCount(int postId){
+    @GetMapping("/getcountByPostId/postId")
+    public int getPostCount(@PathVariable int postId){
         return postCommentService.getPostCommentCount(postId);
+    }
+    @GetMapping("/findbypostid/{postId}")
+    public Response getByPostId(@PathVariable int postId){
+        return postCommentService.findByPostId(postId);
     }
 
 }

@@ -11,5 +11,6 @@ public interface PostCommentService {
     Response update(PostComment comment);
     Response findAll();
     Response findById(int id);
+    Response findByPostId(int id);
     int getPostCommentCount(int postId);
 }
