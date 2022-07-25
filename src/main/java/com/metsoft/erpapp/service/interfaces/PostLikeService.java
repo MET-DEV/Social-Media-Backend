@@ -11,5 +11,6 @@ public interface PostLikeService {
     Response findAll();
     Response findById();
     int getPostLikeByPostId(int postId);
+    Response findByPostId(int postId);
 
 }

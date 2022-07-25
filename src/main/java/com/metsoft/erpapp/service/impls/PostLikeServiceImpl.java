@@ -23,10 +23,20 @@ public class PostLikeServiceImpl implements PostLikeService {
 
     @Override
     public Response save(SavePostLikeDto savePostLikeDto) {
+        PostLike postLikeCheck=postLikeRepository.getPostLikeByPostIdAndUserId(savePostLikeDto.getPost_id(),savePostLikeDto.getUser_id());
         PostLike postLike=savePostLikeDto.savePostDtoToPostLike(savePostLikeDto);
+        if (postLikeCheck!=null){
+            postLikeRepository.delete(postLikeCheck);
+            return new SuccessResponse(true,"Post Disliked");
+        }
         postLikeRepository.save(postLike);
         return new SuccessResponse(true,"Post Liked");
     }
+
+
+
+
+
 
     @Override
     public Response delete(int id) {
@@ -51,5 +61,10 @@ public class PostLikeServiceImpl implements PostLikeService {
     @Override
     public int getPostLikeByPostId(int postId) {
         return postLikeRepository.getPostLikeCountByPostId(postId);
+    }
+
+    @Override
+    public Response findByPostId(int postId) {
+        return new SuccessDataResponse<List<PostLike>>(true,"Post likes listed for post id",postLikeRepository.getByPostId(postId));
     }
 }

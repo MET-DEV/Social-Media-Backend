@@ -21,8 +21,13 @@ public class PostLikesController {
     public Response findAll(){
         return postLikeService.findAll();
     }
+    @GetMapping("/findbypostid/{id}")
+    public Response findByPostId(@PathVariable int id){
+        return postLikeService.findByPostId(id);
+    }
     @PostMapping("")
     public Response save(@RequestBody SavePostLikeDto savePostLikeDto){
         return postLikeService.save(savePostLikeDto);
     }
+
 }

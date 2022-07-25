@@ -1,5 +1,6 @@
 package com.metsoft.erpapp.model.dbModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 
